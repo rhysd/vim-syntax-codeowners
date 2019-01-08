@@ -6,12 +6,13 @@ Vim filetype support for [GitHub `CODEOWNERS` file][ghdoc]
 `CODEOWNERS` file syntax is basically the same as `.gitignore`. [vim-syntax-codeowners][repo] provides
 additional syntax highlights and features for GitHub specific things:
 
+- Dedicated filetype `codeowners`
 - File path patterns highlighting
 - `@user` or `@org/team` highlighting
 
 Comparison:
 
-| Default (ft=`conf`)             | By this plugin (ft=`codeowners`)        |
+| Default (`ft=conf`)             | By this plugin (`ft=codeowners`)        |
 |---------------------------------|-----------------------------------------|
 | ![screenshot for conf][ss-conf] | ![screenshot-codeowners][ss-codeowners] |
 
@@ -39,6 +40,16 @@ call minpac#add('rhysd/vim-syntax-codeowners')
 ```
 
 When you're using Vim's builtin packager, please follow instruction at `:help pack-add`.
+
+
+## Customization
+
+### `g:codeowners_only_dot_github`
+
+If this variable exists and its value is set to `1`, only setting `codeowners` filetype for `.github/CODEOWNERS` file.
+This configuration is conservative and useful when you may use `CODEOWNERS` file outside GitHub since
+`.github` directory is dedicated for GitHub.
+By default this plugin sets `codeowners` filetype at any `CODEOWNERS` files.
 
 
 ## Development
