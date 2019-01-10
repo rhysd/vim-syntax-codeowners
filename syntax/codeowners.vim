@@ -16,13 +16,15 @@ set cpo&vim
 
 syn match codeownersComment /^#.*$/ contains=@Spell
 syn match codeownersDef /^[^#].*$/ contains=codeownersPattern
-syn match codeownersPattern /^\S\+/ contained containedin=codeownersDef nextgroup=codeownersOwners
+syn match codeownersPattern /^\S\+/ contained containedin=codeownersDef nextgroup=codeownersOwners contains=codeownersPatternSpecial
+syn match codeownersPatternSpecial /\\\@<![?*]\|\_^!/ contained containedin=codeownersPattern display
 syn match codeownersOwners /\s\+.*$/ contained contains=codeownersUserOrTeam,codeownersEmail
 syn match codeownersUserOrTeam /\%(\s\+\)\@<=@\S\+/ contained containedin=codeownersOwners display
 syn match codeownersEmail /\%(\s\+\)\@<=[^@[:space:]]\+@\S\+/ contained containedin=codeownersOwners display
 
 hi def link codeownersComment Comment
 hi def link codeownersPattern Define
+hi def link codeownersPatternSpecial Special
 hi def link codeownersUserOrTeam Identifier
 hi def link codeownersEmail String
 
